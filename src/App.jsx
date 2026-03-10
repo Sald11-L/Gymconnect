@@ -723,6 +723,12 @@ export default function App() {
   const confettiRef = useRef(null);
   const [ghostMode, setGhostMode]   = useState(false); // hidden on floor, compliments show as "Someone"
 
+  const [bonusComplimentEarnedToday, setBonusComplimentEarnedToday] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('frost_bonus_compliment') || '{}');
+      return saved.date === todayKey;
+    } catch { return false; }
+  });
   const TIER_LIMITS = { free: 5, plus: Infinity, pro: Infinity };
   const [showOneLeftNudge, setShowOneLeftNudge] = useState(false);
   const bonusCompliments = bonusComplimentEarnedToday ? 1 : 0;
