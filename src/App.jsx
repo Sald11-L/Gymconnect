@@ -661,7 +661,6 @@ export default function App() {
   const [firstName, setFirstName]   = useState("");
   const [lastInitial, setLastInitial] = useState("");
   const [age, setAge]               = useState("");
-  const [birthday, setBirthday]     = useState({ month: "", day: "", year: "" });
   const [height, setHeight]         = useState("");
   const [sexuality, setSexuality]   = useState("");
   const [pronouns, setPronouns]     = useState("");
@@ -724,12 +723,6 @@ export default function App() {
   const confettiRef = useRef(null);
   const [ghostMode, setGhostMode]   = useState(false); // hidden on floor, compliments show as "Someone"
 
-  const [bonusComplimentEarnedToday, setBonusComplimentEarnedToday] = useState(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem('frost_bonus_compliment') || '{}');
-      return saved.date === todayKey;
-    } catch { return false; }
-  });
   const TIER_LIMITS = { free: 5, plus: Infinity, pro: Infinity };
   const [showOneLeftNudge, setShowOneLeftNudge] = useState(false);
   const bonusCompliments = bonusComplimentEarnedToday ? 1 : 0;
@@ -758,6 +751,12 @@ export default function App() {
     } catch { return false; }
   });
   const STREAK_THRESHOLD = 30 * 60; // 30 minutes in seconds
+  const [bonusComplimentEarnedToday, setBonusComplimentEarnedToday] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("frost_bonus_compliment") || "{}");
+      return saved.date === todayKey;
+    } catch { return false; }
+  });
   const [showCheckinSheet, setShowCheckinSheet] = useState(false);
   const [sessionDuration, setSessionDuration] = useState(60); // minutes
   const [sessionAutoCheckoutAt, setSessionAutoCheckoutAt] = useState(null); // timestamp
