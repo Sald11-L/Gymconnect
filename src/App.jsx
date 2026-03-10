@@ -661,6 +661,7 @@ export default function App() {
   const [firstName, setFirstName]   = useState("");
   const [lastInitial, setLastInitial] = useState("");
   const [age, setAge]               = useState("");
+  const [birthday, setBirthday]     = useState({ month: "", day: "", year: "" });
   const [height, setHeight]         = useState("");
   const [sexuality, setSexuality]   = useState("");
   const [pronouns, setPronouns]     = useState("");
